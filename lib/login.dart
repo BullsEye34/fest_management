@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'events.dart';
+
 class login extends StatefulWidget {
   @override
   _loginState createState() => _loginState();
@@ -106,17 +108,7 @@ class _loginState extends State<login> {
         .then((FirebaseUser user) {
       print(user.uid);
       print('****************************************************************');
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            // Retrieve the text the that user has entered by using the
-            // TextEditingController.
-            content: Text(user.uid),
-          );
-        },
-      );
-
+      _navigateToNextScreen(context, events());
     }).catchError((e) {
       showDialog(
         context: context,
@@ -129,5 +121,12 @@ class _loginState extends State<login> {
         },
       );
     });
+  }
+
+  void _navigateToNextScreen(BuildContext context, Widget n) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => n),
+    );
   }
 }
