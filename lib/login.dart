@@ -34,64 +34,76 @@ class _loginState extends State<login> {
               child: Center(
                 child: Wrap(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 300.0,
-                        child: TextField(
-                            controller: uname,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Username',
-                            )),
+                    Center(
+                      child: Wrap(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: TextField(
+                                  controller: uname,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Username',
+                                  )),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: TextField(
+                                  controller: pwd,
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Password',
+                                  )),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: 300.0,
-                        child: TextField(
-                            controller: pwd,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
-                            )),
+                    Center(
+                      child: Wrap(
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width / 3,
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: OutlineButton(
+                                onPressed:
+                                    /*(){
+                              return showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    // Retrieve the text the that user has entered by using the
+                                    // TextEditingController.
+                                    content: Text("Username : " + uname.text + "\nPassword : " + pwd.text),
+                                  );
+                                },
+                              );
+                            }*/
+                                    submite,
+                                child: Text("Submit"),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 3,
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: OutlineButton(
+                                onPressed: () {},
+                                child: Text("Clear"),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Container(
-                      width: 160.0,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: OutlineButton(
-                          onPressed:
-                              /*(){
-                            return showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  // Retrieve the text the that user has entered by using the
-                                  // TextEditingController.
-                                  content: Text("Username : " + uname.text + "\nPassword : " + pwd.text),
-                                );
-                              },
-                            );
-                          }*/
-                              submite,
-                          child: Text("Submit"),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 160.0,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: OutlineButton(
-                          onPressed: () {},
-                          child: Text("Clear"),
-                        ),
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ),
