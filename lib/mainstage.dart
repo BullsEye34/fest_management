@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'events/singing.dart';
+import 'events/Dancing/dancing.dart';
 
 class mainstage extends StatefulWidget {
   @override
@@ -51,6 +52,7 @@ class _mainstageState extends State<mainstage> {
                 child: Center(
                   child: FlatButton(
                     onPressed: () {
+
                       transport(singing());
                     },
                     child: Text(
@@ -87,7 +89,9 @@ class _mainstageState extends State<mainstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(dancing());
+                    },
                     child: Text(
                       'Dancing',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dm.dart';
 
-class singing extends StatefulWidget {
+class dancing extends StatefulWidget {
   @override
-  _singingState createState() => _singingState();
+  _dancingState createState() => _dancingState();
 }
 
-class _singingState extends State<singing> {
+class _dancingState extends State<dancing> {
 
   @override
   Widget build(BuildContext context) {

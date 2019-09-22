@@ -28,7 +28,7 @@ class _dmState extends State<dm> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "An amazing event about singing",
+            "An amazing event about Dancing",
             style: TextStyle(fontSize: 25),
           ),
         ),
@@ -42,7 +42,7 @@ class _dmState extends State<dm> {
         Column(
           children: <Widget>[
             Text(
-              "> 2 in a team",
+              "> 6 in a team",
               style: TextStyle(fontSize: 20.0),
             ),
             Text(
@@ -65,7 +65,7 @@ class _dmState extends State<dm> {
               style: TextStyle(fontSize: 20.0),
             ),
             Text(
-              "₹ 150 per Team Of 2",
+              "₹ 500 per Team Of 6",
               style: TextStyle(fontSize: 20.0),
             ),
           ],
@@ -147,10 +147,10 @@ class _dmState extends State<dm> {
                       _slider = values;
                     });
                   },
-                  divisions: 1,
+                  divisions: 5,
                   activeColor: Colors.blue,
-                  label: _slider.toString(),
-                  max: 2,
+                  label: _slider.toInt().toString(),
+                  max: 6,
                   min: 1,
                 )
               ],
@@ -246,7 +246,7 @@ class _dmState extends State<dm> {
     if (_nameCon.text != "" && _phCon.text != "") {
       await Firestore.instance
           .collection("Main Stage")
-          .document("Singing")
+          .document("Dancing")
           .collection(DateTime.now().toString())
           .document()
           .setData({
@@ -255,6 +255,8 @@ class _dmState extends State<dm> {
         'Gender': _itemSel,
         "No of Members": _slider.toInt()
       });
+
+      Navigator.pop(context);
       return showDialog(
         context: context,
         builder: (context) {
@@ -269,6 +271,7 @@ class _dmState extends State<dm> {
       return showDialog(
         context: context,
         builder: (context) {
+
           return AlertDialog(
             // Retrieve the text the that user has entered by using the
             // TextEditingController.
@@ -277,8 +280,7 @@ class _dmState extends State<dm> {
         },
       );
     }
-    Navigator.pop(context);
 
-    return null;
+
   }
 }
