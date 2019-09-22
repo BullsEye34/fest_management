@@ -248,7 +248,7 @@ class _dmState extends State<dm> {
     if (_nameCon.text != "" && _phCon.text != "") {
       await Firestore.instance
           .collection("Main Stage")
-          .document("Dancing")
+          .document("Fashion Show")
           .collection(user.email)
           .document(DateTime.now().toString())
           .setData({

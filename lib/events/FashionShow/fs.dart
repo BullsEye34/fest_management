@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dm.dart';
 
-class singing extends StatefulWidget {
+class fs extends StatefulWidget {
   @override
-  _singingState createState() => _singingState();
+  _fsState createState() => _fsState();
 }
 
-class _singingState extends State<singing> {
+class _fsState extends State<fs> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Singing"), toolbarOpacity: 1, backgroundColor: Color(0xff000000), centerTitle: true,),
+      appBar: AppBar(title: Text("Fashion Show"), toolbarOpacity: 1, backgroundColor: Color(0xff000000), centerTitle: true,),
       body: Container(
 
         decoration: BoxDecoration(
@@ -28,6 +28,7 @@ class _singingState extends State<singing> {
                 width: MediaQuery.of(context).size.width / 1.05,
                 height: MediaQuery.of(context).size.height / 1.05,
                 child: Card(
+                  color: Color(0x99ffffff),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0)),
                   child: Flex(direction: Axis.vertical, children: <Widget>[Expanded(

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dm.dart';
 
-class dancing extends StatefulWidget {
+class singing extends StatefulWidget {
   @override
-  _dancingState createState() => _dancingState();
+  _singingState createState() => _singingState();
 }
 
-class _dancingState extends State<dancing> {
+class _singingState extends State<singing> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Dancing"), toolbarOpacity: 1, backgroundColor: Color(0xff000000), centerTitle: true,),
+      appBar: AppBar(title: Text("Singing"), toolbarOpacity: 1, backgroundColor: Color(0xff000000), centerTitle: true,),
       body: Container(
 
         decoration: BoxDecoration(

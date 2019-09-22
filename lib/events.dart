@@ -1,3 +1,4 @@
+import 'package:fest_management/page0.dart';
 import 'package:fest_management/sports.dart';
 import 'package:fest_management/technical.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'gaming.dart';
 import 'mainstage.dart';
 import 'offstage.dart';
+import 'page1.dart';
 
 class events extends StatefulWidget {
   @override
@@ -12,55 +14,60 @@ class events extends StatefulWidget {
 }
 
 class _eventsState extends State<events> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("images/events.jpg"),
-          fit: BoxFit.cover,
+
+  final controller = PageController(initialPage: 0);
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  final List<Widget> pages = [
+    page0(
+      key: PageStorageKey('Page1'),
+    ),
+    page1(
+      key: PageStorageKey('Page2'),
+    ),
+  ];
+
+  int _selectedIndex = 0;
+  Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
+    onTap: (int index) => setState(() => _selectedIndex = index),
+    currentIndex: selectedIndex,
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.home,
+          color: Colors.black,
+        ),
+        title: Text(
+          "Events",
+          style: TextStyle(color: Colors.black),
         ),
       ),
-      child: Center(
-        child: SafeArea(
-          child: Container(
-            width: MediaQuery.of(context).size.width / 1.05,
-            height: MediaQuery.of(context).size.height / 1.05,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    runAlignment: WrapAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: mainstage(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: offstage(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: technical(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: gaming(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: sports(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.search,
+          color: Colors.black,
         ),
+        title: Text(
+          "History",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+
+    ],
+  );
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: _bottomNavigationBar(_selectedIndex),
+
+      appBar: AppBar(
+        backgroundColor: Color(0xff000000),
+        title: Text("Fest Management"),
+        centerTitle: true,
+      ),
+      body: PageStorage(
+        child: pages[_selectedIndex],
+        bucket: bucket,
       ),
     );
   }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'events/singing.dart';
+import 'events/FashionShow/fs.dart';
+import 'events/MadAds/ma.dart';
+import 'events/Mr.Mrs.Fresher/mmf.dart';
+import 'events/StandUp/su.dart';
+import 'events/Singing/singing.dart';
 import 'events/Dancing/dancing.dart';
 
 class mainstage extends StatefulWidget {
@@ -25,8 +29,9 @@ class _mainstageState extends State<mainstage> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -52,7 +57,6 @@ class _mainstageState extends State<mainstage> {
                 child: Center(
                   child: FlatButton(
                     onPressed: () {
-
                       transport(singing());
                     },
                     child: Text(
@@ -64,7 +68,9 @@ class _mainstageState extends State<mainstage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -109,7 +115,9 @@ class _mainstageState extends State<mainstage> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -134,7 +142,9 @@ class _mainstageState extends State<mainstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(mmf());
+                    },
                     child: Text(
                       'Mr. and Ms. Fresher',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -144,7 +154,9 @@ class _mainstageState extends State<mainstage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -169,7 +181,9 @@ class _mainstageState extends State<mainstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(fs());
+                    },
                     child: Text(
                       'Fashion Show',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -187,7 +201,9 @@ class _mainstageState extends State<mainstage> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -212,9 +228,11 @@ class _mainstageState extends State<mainstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(ma());
+                    },
                     child: Text(
-                      'DJ Night',
+                      'Mad Ads',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ),
@@ -222,7 +240,9 @@ class _mainstageState extends State<mainstage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20)),
                   gradient: LinearGradient(
                     // Where the linear gradient begins and ends
                     begin: Alignment.bottomCenter,
@@ -247,52 +267,11 @@ class _mainstageState extends State<mainstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(su());
+                    },
                     child: Text(
                       'Stand Up Comedy',
-                      style: TextStyle(color: Colors.white, fontSize: 18.0),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100.0),
-                  gradient: LinearGradient(
-                    // Where the linear gradient begins and ends
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    // Add one stop for each color. Stops should increase from 0 to 1
-                    stops: [0.1, 0.3, 0.5, 0.7, 0.9],
-                    colors: [
-                      // Colors are easy thanks to Flutter's Colors class.
-                      /*Colors.indigo[800],
-                                Colors.indigo[700],
-                                Colors.indigo[600],
-                                Colors.indigo[500],*/
-                      Colors.lime[800],
-                      Colors.lime[700],
-                      Colors.lime[600],
-                      Colors.lime[500],
-                      Colors.lime[400],
-                    ],
-                  ),
-                ),
-                width: MediaQuery.of(context).size.width / 2.5,
-                height: MediaQuery.of(context).size.height / 17,
-                child: Center(
-                  child: FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Mad Ads',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ),
