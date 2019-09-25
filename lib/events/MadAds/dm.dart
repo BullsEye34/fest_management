@@ -247,15 +247,16 @@ class _dmState extends State<dm> {
     print(_nameCon.text + _phCon.text + _itemSel + _slider.toInt().toString());
     if (_nameCon.text != "" && _phCon.text != "") {
       await Firestore.instance
-          .collection("Main Stage")
-          .document("Mad Ads")
-          .collection(user.email)
-          .document(DateTime.now().toString())
+          .collection("Events")
+          .document("Main Stage")
+          .collection("MadAds")
+          .document( DateTime.now().toString())
           .setData({
         'Name': _nameCon.text,
         'Phone': _phCon.text,
         'Gender': _itemSel,
-        "No of Members": _slider.toInt()
+        "No of Members": _slider.toInt(),
+        "Co-Ordinator": user.displayName
       });
 
       Navigator.pop(context);

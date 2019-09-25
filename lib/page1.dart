@@ -1,6 +1,11 @@
+import 'dart:ui';
+
+import 'package:fest_management/Getters/MainStageGetter.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'Getters/getSinging.dart';
 
 class page1 extends StatefulWidget {
   const page1({Key key}) : super(key: key);
@@ -11,17 +16,6 @@ class page1 extends StatefulWidget {
 
 class _page1State extends State<page1> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    some();
-
-  }
-  some() async{
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    QuerySnapshot qs = await Firestore.instance.collection("Main Stage").document("Singing").collection(user.email).getDocuments();
-    print(qs.documents[0].data);
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,14 +33,136 @@ class _page1State extends State<page1> {
             color: Color(0x99ffffff),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0)),
-            child: Center(
-              child: ListView(children: <Widget>[
-                ListTile(title: Text("Hi"),subtitle: Text("Yoo"),)
-              ],)
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery.of(context).size.height / 5,
+                      width: MediaQuery.of(context).size.width / 1.1,
+                      child: Card(
+                        color: Color(0xff3ddc84),
+                        child: Center(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
+                            child: FlatButton(
+                              onPressed: () {
+                                transport(MainStageGetter());
+                              },
+                              child: Text(
+                                "Mainstage",
+                                style: TextStyle(fontSize: 35.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height / 5,
+                          width: MediaQuery.of(context).size.width / 2.16,
+                          child: Card(
+                            color: Color(0xfff25c05),
+                            child: Center(
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: MediaQuery.of(context).size.height,
+                                  child: FlatButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Off Stage",
+                                        style: TextStyle(fontSize: 35.0),
+                                      )),
+                                )),
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 5,
+                          width: MediaQuery.of(context).size.width / 2.16,
+                          child: Card(
+                            color: Color(0xff004bfa),
+                            child: Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: FlatButton(
+                                  onPressed: () {
+                                    return null;
+                                  },
+                                  child: Text(
+                                    "Technical",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height / 5,
+                          width: MediaQuery.of(context).size.width / 2.16,
+                          child: Card(
+                            color: Color(0xff8527b7),
+                            child: Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: FlatButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Sports",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 5,
+                          width: MediaQuery.of(context).size.width / 2.16,
+                          child: Card(
+                            color: Color(0xffffdf00),
+                            child: Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: FlatButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Gaming",
+                                    style: TextStyle(fontSize: 35.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )),
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }
