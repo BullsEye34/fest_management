@@ -1,3 +1,7 @@
+import 'package:fest_management/events/CS/CS.dart';
+import 'package:fest_management/events/Mini/Mini.dart';
+import 'package:fest_management/events/NFS/NFS.dart';
+import 'package:fest_management/events/PUBG/PUBG.dart';
 import 'package:flutter/material.dart';
 
 class gaming extends StatefulWidget {
@@ -47,7 +51,9 @@ class _gamingState extends State<gaming> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(PUBG());
+                    },
                     child: Text(
                       'PUBG Mobile',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -82,7 +88,9 @@ class _gamingState extends State<gaming> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(NFS());
+                    },
                     child: Text(
                       'NFS Most Wanted',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -125,7 +133,9 @@ class _gamingState extends State<gaming> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(CS());
+                    },
                     child: Text(
                       'Counter Strike 1.6',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -160,7 +170,9 @@ class _gamingState extends State<gaming> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(Mini());
+                    },
                     child: Text(
                       'Mini Militia',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -173,5 +185,8 @@ class _gamingState extends State<gaming> {
         ),
       ],
     );
+  }
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }

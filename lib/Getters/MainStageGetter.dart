@@ -1,9 +1,9 @@
-import 'package:fest_management/Getters/getDancing.dart';
-import 'package:fest_management/Getters/getFashion.dart';
-import 'package:fest_management/Getters/getFresh.dart';
-import 'package:fest_management/Getters/getMad.dart';
-import 'package:fest_management/Getters/getSinging.dart';
-import 'package:fest_management/Getters/getStand.dart';
+import 'package:fest_management/Getters/MainStage/getDancing.dart';
+import 'package:fest_management/Getters/MainStage/getFashion.dart';
+import 'package:fest_management/Getters/MainStage/getFresh.dart';
+import 'package:fest_management/Getters/MainStage/getMad.dart';
+import 'package:fest_management/Getters/MainStage/getSinging.dart';
+import 'package:fest_management/Getters/MainStage/getStand.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,3 +1,9 @@
+import 'package:fest_management/events/Carrom/Carrom.dart';
+import 'package:fest_management/events/Chess/Chess.dart';
+import 'package:fest_management/events/Cricket/Cricket.dart';
+import 'package:fest_management/events/FootBall/FootBall.dart';
+import 'package:fest_management/events/Kabbaddi/Kabbaddi.dart';
+import 'package:fest_management/events/TableTennis/TableTennis.dart';
 import 'package:flutter/material.dart';
 
 class sports extends StatefulWidget {
@@ -47,7 +53,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(FootBall());
+                    },
                     child: Text(
                       'Football',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -82,7 +90,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(Cricket());
+                    },
                     child: Text(
                       'Cricket',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -125,7 +135,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(Chess());
+                    },
                     child: Text(
                       'Chess',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -160,7 +172,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(TableTennis());
+                    },
                     child: Text(
                       'Table Tennis',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -203,7 +217,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(Kabbaddi());
+                    },
                     child: Text(
                       'Kabbaddi',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -238,7 +254,9 @@ class _sportsState extends State<sports> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(Carrom());
+                    },
                     child: Text(
                       'Carrom',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -251,5 +269,8 @@ class _sportsState extends State<sports> {
         ),
       ],
     );
+  }
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }

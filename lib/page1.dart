@@ -1,11 +1,15 @@
 import 'dart:ui';
 
 import 'package:fest_management/Getters/MainStageGetter.dart';
+import 'package:fest_management/Getters/OffStageGetter.dart';
+import 'package:fest_management/Getters/SportsGetter.dart';
+import 'package:fest_management/Getters/TechnicalGetter.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'Getters/getSinging.dart';
+import 'Getters/GamingGetter.dart';
+import 'Getters/MainStage/getSinging.dart';
 
 class page1 extends StatefulWidget {
   const page1({Key key}) : super(key: key);
@@ -30,7 +34,7 @@ class _page1State extends State<page1> {
           width: MediaQuery.of(context).size.width / 1.05,
           height: MediaQuery.of(context).size.height / 1.05,
           child: Card(
-            color: Color(0x99ffffff),
+            color: Color(0x39ffffff),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0)),
             child: ClipRRect(
@@ -76,7 +80,9 @@ class _page1State extends State<page1> {
                                   width: MediaQuery.of(context).size.width,
                                   height: MediaQuery.of(context).size.height,
                                   child: FlatButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        transport(OffStageGetter());
+                                      },
                                       child: Text(
                                         "Off Stage",
                                         style: TextStyle(fontSize: 35.0),
@@ -95,7 +101,7 @@ class _page1State extends State<page1> {
                                 height: MediaQuery.of(context).size.height,
                                 child: FlatButton(
                                   onPressed: () {
-                                    return null;
+                                    transport(TechnicalGetter());
                                   },
                                   child: Text(
                                     "Technical",
@@ -121,7 +127,9 @@ class _page1State extends State<page1> {
                                 width: MediaQuery.of(context).size.width,
                                 height: MediaQuery.of(context).size.height,
                                 child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    transport(SportsGetter());
+                                  },
                                   child: Text(
                                     "Sports",
                                     style: TextStyle(fontSize: 35.0),
@@ -141,7 +149,9 @@ class _page1State extends State<page1> {
                                 width: MediaQuery.of(context).size.width,
                                 height: MediaQuery.of(context).size.height,
                                 child: FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    transport(GamingGetter());
+                                  },
                                   child: Text(
                                     "Gaming",
                                     style: TextStyle(fontSize: 35.0),

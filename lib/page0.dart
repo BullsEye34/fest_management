@@ -35,7 +35,7 @@ class _page0State extends State<page0> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
-                color: Color(0x99ffffff),
+                color: Color(0x39ffffff),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 child: Center(

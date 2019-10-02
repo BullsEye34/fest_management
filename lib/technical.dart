@@ -1,3 +1,6 @@
+import 'package:fest_management/events/CodeIt/CodeIt.dart';
+import 'package:fest_management/events/GeneralQuiz/GeneralQuiz.dart';
+import 'package:fest_management/events/TechnicalQuiz/technicalDebate.dart';
 import 'package:flutter/material.dart';
 
 class technical extends StatefulWidget {
@@ -47,7 +50,9 @@ class _technicalState extends State<technical> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(technicalDebate());
+                    },
                     child: Text(
                       'Technical Debate',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -82,7 +87,9 @@ class _technicalState extends State<technical> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(CodeIt());
+                    },
                     child: Text(
                       'Code It',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -125,7 +132,9 @@ class _technicalState extends State<technical> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(GeneralQuiz());
+                    },
                     child: Text(
                       'General Technical Quiz',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -138,5 +147,8 @@ class _technicalState extends State<technical> {
         ),
       ],
     );
+  }
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }

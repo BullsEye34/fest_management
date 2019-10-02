@@ -1,4 +1,15 @@
+import 'package:fest_management/events/CookingWOFire/cookingWOFire.dart';
+import 'package:fest_management/events/DumbCharades/dumb.dart';
+import 'package:fest_management/events/Hogathon/hogathon.dart';
+import 'package:fest_management/events/Musically/musically.dart';
+import 'package:fest_management/events/Photography/photography.dart';
+import 'package:fest_management/events/Poetry/poetry.dart';
+import 'package:fest_management/events/Rangoli/rangoli.dart';
+import 'package:fest_management/events/Sketching/sketching.dart';
+import 'package:fest_management/events/TreasureHunt/treasureHunt.dart';
 import 'package:flutter/material.dart';
+
+import 'events/BegBorrowSteal/bbs.dart';
 
 class offstage extends StatefulWidget {
   @override
@@ -47,7 +58,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(treasureHunt());
+                    },
                     child: Text(
                       'Treasure Hunt',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -82,7 +95,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(hogathon());
+                    },
                     child: Text(
                       'Hogathon',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -125,7 +140,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(bbs());
+                    },
                     child: Text(
                       'Beg Borrow Steal',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -160,7 +177,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(sketching());
+                    },
                     child: Text(
                       'Sketching',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -203,7 +222,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(rangoli());
+                    },
                     child: Text(
                       'Rangoli',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -238,7 +259,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(poetry());
+                    },
                     child: Text(
                       'Poetry',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -281,7 +304,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(photography());
+                    },
                     child: Text(
                       'Photography',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -316,7 +341,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(dumb());
+                    },
                     child: Text(
                       'Dumb Charades',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -359,7 +386,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(musically());
+                    },
                     child: Text(
                       'Musically',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -394,7 +423,9 @@ class _offstageState extends State<offstage> {
                 height: MediaQuery.of(context).size.height / 17,
                 child: Center(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      transport(cookingWOFire());
+                    },
                     child: Text(
                       'Cooking W/O Fire',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -407,5 +438,8 @@ class _offstageState extends State<offstage> {
         ),
       ],
     );
+  }
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }
