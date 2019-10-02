@@ -30,7 +30,7 @@ class _page0State extends State<page0> {
       child: Center(
         child: SafeArea(
           child: Container(
-            width: MediaQuery.of(context).size.width / 1.05,
+            width: MediaQuery.of(context).size.width ,
             height: MediaQuery.of(context).size.height / 1.05,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -48,23 +48,23 @@ class _page0State extends State<page0> {
                           runAlignment: WrapAlignment.spaceEvenly,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: mainstage(),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: offstage(),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: technical(),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: gaming(),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: sports(),
                             ),
                           ],
