@@ -13,7 +13,7 @@ class _getMadState extends State<getMad> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Singing History"),
+        title: Text("Mad Ads History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),

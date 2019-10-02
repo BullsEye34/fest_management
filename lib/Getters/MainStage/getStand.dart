@@ -13,7 +13,7 @@ class _getStandState extends State<getStand> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Singing History"),
+        title: Text("Stand Up Comedy History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),

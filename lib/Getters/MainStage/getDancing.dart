@@ -13,7 +13,7 @@ class _getDancingState extends State<getDancing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Singing History"),
+        title: Text("Dancing History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),

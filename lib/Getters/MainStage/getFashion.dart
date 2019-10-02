@@ -13,7 +13,7 @@ class _getFashionState extends State<getFashion> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Singing History"),
+        title: Text("Fashion Show History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),

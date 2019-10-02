@@ -13,7 +13,7 @@ class _getFreshState extends State<getFresh> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Singing History"),
+        title: Text("Mr. And Ms. Fresher History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
