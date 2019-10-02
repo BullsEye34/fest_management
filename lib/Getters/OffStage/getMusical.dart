@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class getFresh extends StatefulWidget {
+class getMusical extends StatefulWidget {
   @override
-  _getFreshState createState() => _getFreshState();
+  _getMusicalState createState() => _getMusicalState();
 }
 
-class _getFreshState extends State<getFresh> {
+class _getMusicalState extends State<getMusical> {
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mr. And Ms. Fresher History"),
+        title: Text("Musically History"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
@@ -22,8 +22,8 @@ class _getFreshState extends State<getFresh> {
         child: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance
               .collection('Events')
-              .document("Main Stage")
-              .collection("MMF")
+              .document("Off Stage")
+              .collection("musically")
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
