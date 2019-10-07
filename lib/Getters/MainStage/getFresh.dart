@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class getFresh extends StatefulWidget {
   @override
@@ -36,6 +37,10 @@ class _getFreshState extends State<getFresh> {
                   children:
                   snapshot.data.documents.map((DocumentSnapshot document) {
                     return new ListTile(
+                      onTap: () {
+                        UrlLauncher.launch(
+                            "tel: ${document['Phone'].toString()}");
+                      },
                       isThreeLine: true,
                       trailing: Text(
                         "No of Members = " +

@@ -196,6 +196,7 @@ class _dmState extends State<dm> {
               children: <Widget>[
                 Container(
                   width: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.height / 16,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: FlatButton(
@@ -217,6 +218,7 @@ class _dmState extends State<dm> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.height / 16,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: FlatButton(

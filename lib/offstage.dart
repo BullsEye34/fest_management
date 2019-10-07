@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:fest_management/events/CookingWOFire/cookingWOFire.dart';
 import 'package:fest_management/events/DumbCharades/dumb.dart';
 import 'package:fest_management/events/Hogathon/hogathon.dart';
@@ -28,7 +27,7 @@ class _offstageState extends State<offstage> {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaY: 5.0, sigmaX: 5.0),
         child: Card(
-          color: Color(0xbfffffff),
+          color: Color(0xb3ffffff),
           elevation: 0,
           shape: BeveledRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -42,12 +41,12 @@ class _offstageState extends State<offstage> {
                   child: Card(
                     color: Colors.transparent,
                     elevation: 0,
-                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0) ,side: BorderSide(width: 2, color: Colors.grey)),
+                    shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0) ,side: BorderSide(width: 1, color: Colors.white)),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Offstage Events",
-                        style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.red),
+                        style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                     ),
                   )),

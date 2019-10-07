@@ -25,7 +25,7 @@ class _mainstageState extends State<mainstage> {
         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
         child: Card(
           elevation: 0,
-          color: Color(0xbfffffff),
+          color: Color(0xb3ffffff),
           //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0), side: BorderSide(width: 2.0, color: Colors.grey.withOpacity(0.8))),
           shape: BeveledRectangleBorder(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(30)),
@@ -40,7 +40,7 @@ class _mainstageState extends State<mainstage> {
                   color: Colors.transparent,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
-                      side: BorderSide(width: 2, color: Colors.grey)),
+                      side: BorderSide(width: 1, color: Colors.white)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
@@ -48,7 +48,7 @@ class _mainstageState extends State<mainstage> {
                       style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.red),
+                          color: Colors.black),
                     ),
                   ),
                 )),
