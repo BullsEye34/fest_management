@@ -40,38 +40,64 @@ class _page0State extends State<page0> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 child: Center(
-                  child: SingleChildScrollView(
-                      child: Wrap(
-                        runAlignment: WrapAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: mainstage(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: offstage(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: technical(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: gaming(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: sports(),
-                          ),
-                        ],
+                  child: ListView(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: mainstage(),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: offstage(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: technical(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: gaming(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: sports(),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+  bak(){
+    SingleChildScrollView(
+      child: Wrap(
+        runAlignment: WrapAlignment.spaceEvenly,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: mainstage(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: offstage(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: technical(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: gaming(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: sports(),
+          ),
+        ],
       ),
     );
   }
