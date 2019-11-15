@@ -11,7 +11,7 @@ import 'events/Singing/singing.dart';
 import 'events/StandUp/su.dart';
 import 'events/Dancing/dancing.dart';
 import 'package:random_color/random_color.dart';
-import 'test1.dart';
+import 'confirmMain.dart';
 import 'dart:convert';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -103,7 +103,7 @@ class _mainstageState extends State<mainstage> {
                 child: new Center(
                   child: new Text(
                     snapshot.data.documents[index]['title'],
-                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.white),
                   ),
                 ),
               ),

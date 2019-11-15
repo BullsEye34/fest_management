@@ -1,5 +1,7 @@
-import 'package:fest_management/Regis.dart';
+
 import 'package:flutter/material.dart';
+
+import 'RegisMain.dart';
 
 class test1 extends StatefulWidget {
   var titles, rules, rates, every;
@@ -62,7 +64,7 @@ class _test1State extends State<test1> {
                     actions: <Widget>[
                       FlatButton(
                         onPressed: () {
-                          transport(regis(titles));
+                          transport(regisMain(titles));
                         },
                         child: Text(
                           "I Confirm",

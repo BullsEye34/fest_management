@@ -1,23 +1,22 @@
-import 'package:fest_management/events.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'events.dart';
 
-class regis extends StatefulWidget {
+class regisOff extends StatefulWidget {
   var every;
 
-  regis(var ev) {
+  regisOff(var ev) {
     every = ev;
   }
-
   @override
-  _regisState createState() => _regisState(every);
+  _regisOffState createState() => _regisOffState(every);
 }
 
-class _regisState extends State<regis> {
+class _regisOffState extends State<regisOff> {
   var every;
 
-  _regisState(var ev) {
+  _regisOffState(var ev) {
     every = ev;
   }
 
@@ -129,6 +128,8 @@ class _regisState extends State<regis> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
                 controller: phno,
+                keyboardType: TextInputType.number,
+                maxLength: 10,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter participant\'s Phone Number';
@@ -136,6 +137,7 @@ class _regisState extends State<regis> {
                   return null;
                 },
                 decoration: InputDecoration(
+                  prefixText: "+91",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -293,7 +295,7 @@ class _regisState extends State<regis> {
     if (name.text != "" && phno.text != "") {
       await Firestore.instance
           .collection("req")
-          .document("Main Stage")
+          .document("Off Stage")
           .collection("names")
           .document("Events")
           .collection(every)
