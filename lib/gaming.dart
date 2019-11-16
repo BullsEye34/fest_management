@@ -1,8 +1,14 @@
+import 'package:fest_management/confirmGame.dart';
 import 'package:fest_management/events/CS/CS.dart';
 import 'package:fest_management/events/Mini/Mini.dart';
 import 'package:fest_management/events/NFS/NFS.dart';
 import 'package:fest_management/events/PUBG/PUBG.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class gaming extends StatefulWidget {
   @override
@@ -12,6 +18,103 @@ class gaming extends StatefulWidget {
 class _gamingState extends State<gaming> {
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20.0),
+      child: Container(
+        width: w / 1.1,
+        child: Card(
+          color: Color(0xcfffffff),
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Wrap(
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    "Gaming",
+                    style:
+                    TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                new Container(
+                    margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                    child: Divider(
+                      color: Colors.black,
+                      height: 36,
+                    )),
+                ste(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+
+  }
+
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
+  }
+
+  Widget ste() {
+    const Base64Codec base64 = Base64Codec();
+    var rules;
+    var rate;
+    var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
+    return new StreamBuilder(
+      stream: Firestore.instance
+          .collection('list')
+          .document('Gaming')
+          .collection('names')
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) {
+          return Center(child: const Text('Loading events...'));
+        }
+        return new StaggeredGridView.countBuilder(
+
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: 2,
+          itemCount: snapshot.data.documents.length,
+          itemBuilder: (BuildContext context, int index) => GestureDetector(
+            onTap: (){
+              rate = snapshot.data.documents[index]['rate'];
+              rules = utf8.decode(
+                  base64.decode(snapshot.data.documents[index]['rules']));
+              transport(confirmGame(snapshot.data.documents[index]['title'], rules,
+                  rate, snapshot.data.documents[index]['title']));
+            },
+            child: new Container(
+              height: h,
+              child: Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
+                color: Color(0xb3860CE8),
+                child: new Center(
+                  child: new Text(
+                    snapshot.data.documents[index]['title'],
+                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          staggeredTileBuilder: (int index) => new StaggeredTile.count(1, 0.4),
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+        );
+      },
+    );
+  }
+
+  Widget backup(){
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
     return Card(
@@ -30,9 +133,9 @@ class _gamingState extends State<gaming> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-              "Gaming Events",
-              style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-            ),
+                      "Gaming Events",
+                      style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 )),
             Padding(
@@ -185,8 +288,5 @@ class _gamingState extends State<gaming> {
         ),
       ),
     );
-  }
-  transport(Widget n) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
   }
 }
