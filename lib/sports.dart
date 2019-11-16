@@ -22,7 +22,22 @@ class _sportsState extends State<sports> {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    return ClipRRect(
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text("Sports"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/building.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+          child: ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
         width: w / 1.1,
@@ -53,7 +68,7 @@ class _sportsState extends State<sports> {
           ),
         ),
       ),
-    );
+    ),),),);
 
 
   }

@@ -20,7 +20,22 @@ class _technicalState extends State<technical> {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    return ClipRRect(
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text("Technical"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/building.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+          child: ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
         width: w / 1.1,
@@ -51,7 +66,7 @@ class _technicalState extends State<technical> {
           ),
         ),
       ),
-    );
+    ),),),);
     
   }
   Widget ste() {

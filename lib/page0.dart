@@ -85,54 +85,64 @@ class _page0State extends State<page0> {
                         ),
                       ),
 
-                      StreamBuilder(
-                        stream: Firestore.instance
-                            .collection('list')
-                            .snapshots(),
-                        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (!snapshot.hasData) {
-                            return Center(child: const Text('Loading events...'));
-                          }
-                          return new StaggeredGridView.countBuilder(
-
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            crossAxisCount: 2,
-                            itemCount: snapshot.data.documents.length,
-                            itemBuilder: (BuildContext context, int index) => GestureDetector(
-                              onTap: (){
-                                /*rate = snapshot.data.documents[index]['rate'];
-                                rules = utf8.decode(
-                                    base64.decode(snapshot.data.documents[index]['rules']));*/
-                                switch(snapshot.data.documents[index].documentID){
-                                  case 'Main Stage': transport(mainstage()); break;
-                                  case 'Off Stage': transport(offstage()); break;
-                                  case 'Technical': transport(technical()); break;
-                                  case 'Gaming': transport(gaming()); break;
-                                  case 'Sports': transport(sports()); break;
+                      Container(
+                        child: Card(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                          elevation: 0,
+                          color: Color(0xf3ffffff),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection('list')
+                                  .snapshots(),
+                              builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (!snapshot.hasData) {
+                                  return Center(child: const Text('Loading events...'));
                                 }
-                              },
-                              child: new Container(
-                                height: h,
-                                child: Card(
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
-                                  color: Color(0xf3ffffff),
-                                  child: new Center(
-                                    child: new Text(
-                                      snapshot.data.documents[index].documentID.toString(),
-                                      style: TextStyle(fontSize: 30.0, color: Colors.black),
+                                return new StaggeredGridView.countBuilder(
+
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  crossAxisCount: 2,
+                                  itemCount: snapshot.data.documents.length,
+                                  itemBuilder: (BuildContext context, int index) => GestureDetector(
+                                    onTap: (){
+                                      /*rate = snapshot.data.documents[index]['rate'];
+                                      rules = utf8.decode(
+                                          base64.decode(snapshot.data.documents[index]['rules']));*/
+                                      switch(snapshot.data.documents[index].documentID){
+                                        case 'Main Stage': transport(mainstage()); break;
+                                        case 'Off Stage': transport(offstage()); break;
+                                        case 'Technical': transport(technical()); break;
+                                        case 'Gaming': transport(gaming()); break;
+                                        case 'Sports': transport(sports()); break;
+                                      }
+                                    },
+                                    child: new Container(
+                                      height: h,
+                                      child: Card(
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
+                                        color: Color(0xf3D42361),
+                                        child: new Center(
+                                          child: new Text(
+                                            snapshot.data.documents[index].documentID.toString(),
+                                            style: TextStyle(fontSize: 30.0, color: Colors.black),
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
+                                  staggeredTileBuilder: (int index) => new StaggeredTile.count(1, (index.isEven)? 1:1.5),
+                                  mainAxisSpacing: 4.0,
+                                  crossAxisSpacing: 4.0,
+                                );
+                              },
                             ),
-                            staggeredTileBuilder: (int index) => new StaggeredTile.count(1, (index.isEven)? 1:1.5),
-                            mainAxisSpacing: 4.0,
-                            crossAxisSpacing: 4.0,
-                          );
-                        },
+                          ),
+                        ),
                       ),
 /*
                       Padding(

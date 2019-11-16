@@ -27,7 +27,22 @@ class _offstageState extends State<offstage> {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    return ClipRRect(
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text("Off Stage"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/building.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+          child: ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
         width: w / 1.1,
@@ -58,7 +73,7 @@ class _offstageState extends State<offstage> {
           ),
         ),
       ),
-    );
+    ),),),);
   }
 
 

@@ -119,6 +119,8 @@ class _regisMainState extends State<regisMain> {
                   return null;
                 },
                 decoration: InputDecoration(
+
+                  prefixIcon: Icon(Icons.tag_faces),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -129,6 +131,7 @@ class _regisMainState extends State<regisMain> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
                 controller: phno,
+                maxLength: 10,
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value.isEmpty) {
@@ -137,6 +140,10 @@ class _regisMainState extends State<regisMain> {
                   return null;
                 },
                 decoration: InputDecoration(
+                  prefixText: "+91",
+
+                  prefixIcon: Icon(Icons.phone_android),
+
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -254,6 +261,8 @@ class _regisMainState extends State<regisMain> {
                     ),
                     color: Colors.red,
                     onPressed: () {
+
+
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => events()));
                       showDialog(

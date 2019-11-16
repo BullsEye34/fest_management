@@ -118,6 +118,8 @@ class _regisOffState extends State<regisOff> {
                   return null;
                 },
                 decoration: InputDecoration(
+
+                  prefixIcon: Icon(Icons.tag_faces),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -137,6 +139,8 @@ class _regisOffState extends State<regisOff> {
                   return null;
                 },
                 decoration: InputDecoration(
+
+                  prefixIcon: Icon(Icons.phone_android),
                   prefixText: "+91",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),

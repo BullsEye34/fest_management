@@ -22,9 +22,9 @@ class _getDancingState extends State<getDancing> {
         padding: const EdgeInsets.all(8.0),
         child: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance
-              .collection('Events')
+              .collection('req')
               .document("Main Stage")
-              .collection("Dancing")
+              .collection("names").document('Events').collection('Dancing')
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

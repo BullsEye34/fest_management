@@ -26,33 +26,51 @@ class _mainstageState extends State<mainstage> {
     RandomColor _randomColor = RandomColor();
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20.0),
-      child: Container(
-        width: w / 1.1,
-        child: Card(
-          color: Color(0xcfffffff),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Wrap(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    "Main Stage",
-                    style:
-                        TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text("Main Stage"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/building.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Container(
+              width: w / 1.05,
+              child: Card(
+                color: Color(0xf3ffffff),
+                shape:
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Wrap(
+                    children: <Widget>[
+                      Center(
+                        child: Text(
+                          "Main Stage",
+                          style:
+                              TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      new Container(
+                          margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                          child: Divider(
+                            color: Colors.black,
+                            height: 36,
+                          )),
+                      ste(),
+                    ],
                   ),
                 ),
-                new Container(
-                    margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                    child: Divider(
-                      color: Colors.black,
-                      height: 36,
-                    )),
-                ste(),
-              ],
+              ),
             ),
           ),
         ),
