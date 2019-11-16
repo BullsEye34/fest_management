@@ -16,8 +16,6 @@ class page0 extends StatefulWidget {
 }
 
 class _page0State extends State<page0> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +28,7 @@ class _page0State extends State<page0> {
       child: Center(
         child: SafeArea(
           child: Container(
-            width: MediaQuery.of(context).size.width ,
+            width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 1.05,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -42,6 +40,24 @@ class _page0State extends State<page0> {
                 child: Center(
                   child: ListView(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 1.4,
+                          height: MediaQuery.of(context).size.height / 15,
+                          child: Card(
+                            color: Color(0xc3ffffff),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                            elevation: 0,
+                            child: Center(
+                              child: Text(
+                                "List Of Events",
+                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: mainstage(),
@@ -72,7 +88,8 @@ class _page0State extends State<page0> {
       ),
     );
   }
-  bak(){
+
+  bak() {
     SingleChildScrollView(
       child: Wrap(
         runAlignment: WrapAlignment.spaceEvenly,

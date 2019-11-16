@@ -98,6 +98,7 @@ class _mainstageState extends State<mainstage> {
             child: new Container(
               height: h,
               child: Card(
+                elevation: 0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
                 color: Color(0xb3F28705),
                 child: new Center(

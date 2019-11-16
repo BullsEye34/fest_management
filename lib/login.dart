@@ -88,6 +88,7 @@ class _loginState extends State<login> {
                                     validator: validateEmail,
                                       controller: uname,
                                       decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.face),
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),),
                                         labelText: 'Username (Mail ID)',
                                       )),
@@ -111,6 +112,7 @@ class _loginState extends State<login> {
                                       return null;
                                     },
                                     decoration: InputDecoration(
+                                      prefixIcon: Icon(Icons.lock),
                                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),),
                                       labelText: 'Password',
                                     )),

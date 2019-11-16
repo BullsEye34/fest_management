@@ -9,7 +9,6 @@ import 'package:fest_management/events/Poetry/poetry.dart';
 import 'package:fest_management/events/Rangoli/rangoli.dart';
 import 'package:fest_management/events/Sketching/sketching.dart';
 import 'package:fest_management/events/TreasureHunt/treasureHunt.dart';
-import 'package:fest_management/confirmMain.dart';
 import 'package:flutter/material.dart';
 
 import 'events/BegBorrowSteal/bbs.dart';
@@ -97,6 +96,7 @@ class _offstageState extends State<offstage> {
             child: new Container(
               height: h,
               child: Card(
+                elevation: 0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
                 color: Color(0xb3860CE8),
                 child: new Center(
