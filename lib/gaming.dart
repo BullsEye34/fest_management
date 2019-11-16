@@ -96,7 +96,7 @@ class _gamingState extends State<gaming> {
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
-                color: Color(0xb3860CE8),
+                color: Color(0xb3040DBF),
                 child: new Center(
                   child: new Text(
                     snapshot.data.documents[index]['title'],

@@ -90,7 +90,7 @@ class _technicalState extends State<technical> {
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
-                color: Color(0xb3BE1500),
+                color: Color(0xb3CC0048),
                 child: new Center(
                   child: new Text(
                     snapshot.data.documents[index]['title'],

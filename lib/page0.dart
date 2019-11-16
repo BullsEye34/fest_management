@@ -2,6 +2,9 @@ import 'package:fest_management/sports.dart';
 import 'package:fest_management/technical.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
 
 import 'gaming.dart';
 import 'mainstage.dart';
@@ -16,8 +19,31 @@ class page0 extends StatefulWidget {
 }
 
 class _page0State extends State<page0> {
+
+  transport(Widget n) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => n));
+  }
+  var ms = mainstage(), os, gam, spo, tec;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Widget os() => offstage();
+    Widget gam() => gaming();
+    Widget spo() => sports();
+    Widget tec() => technical();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    const Base64Codec base64 = Base64Codec();
+    var rules;
+    var rate;
+    var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -44,23 +70,75 @@ class _page0State extends State<page0> {
                         padding: const EdgeInsets.all(2.0),
                         child: Container(
                           width: MediaQuery.of(context).size.width / 1.4,
-                          height: MediaQuery.of(context).size.height / 15,
+                          height: MediaQuery.of(context).size.height / 12,
                           child: Card(
-                            color: Color(0xc3ffffff),
+                            color: Color(0xb3000000),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                             elevation: 0,
                             child: Center(
                               child: Text(
                                 "List Of Events",
-                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
                               ),
                             ),
                           ),
                         ),
                       ),
+
+                      StreamBuilder(
+                        stream: Firestore.instance
+                            .collection('list')
+                            .snapshots(),
+                        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(child: const Text('Loading events...'));
+                          }
+                          return new StaggeredGridView.countBuilder(
+
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            crossAxisCount: 2,
+                            itemCount: snapshot.data.documents.length,
+                            itemBuilder: (BuildContext context, int index) => GestureDetector(
+                              onTap: (){
+                                /*rate = snapshot.data.documents[index]['rate'];
+                                rules = utf8.decode(
+                                    base64.decode(snapshot.data.documents[index]['rules']));*/
+                                switch(snapshot.data.documents[index].documentID){
+                                  case 'Main Stage': transport(mainstage()); break;
+                                  case 'Off Stage': transport(offstage()); break;
+                                  case 'Technical': transport(technical()); break;
+                                  case 'Gaming': transport(gaming()); break;
+                                  case 'Sports': transport(sports()); break;
+                                }
+                              },
+                              child: new Container(
+                                height: h,
+                                child: Card(
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
+                                  color: Color(0xf3ffffff),
+                                  child: new Center(
+                                    child: new Text(
+                                      snapshot.data.documents[index].documentID.toString(),
+                                      style: TextStyle(fontSize: 30.0, color: Colors.black),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            staggeredTileBuilder: (int index) => new StaggeredTile.count(1, (index.isEven)? 1:1.5),
+                            mainAxisSpacing: 4.0,
+                            crossAxisSpacing: 4.0,
+                          );
+                        },
+                      ),
+/*
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: mainstage(),
+                        //child: ms,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(2.0),
@@ -77,7 +155,7 @@ class _page0State extends State<page0> {
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: sports(),
-                      ),
+                      ),*/
                     ],
                   ),
                 ),
