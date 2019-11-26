@@ -47,7 +47,7 @@ class _page0State extends State<page0> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("images/events.jpg"),
+          image: AssetImage("images/logine.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -72,13 +72,13 @@ class _page0State extends State<page0> {
                           width: MediaQuery.of(context).size.width / 1.4,
                           height: MediaQuery.of(context).size.height / 12,
                           child: Card(
-                            color: Color(0xb3000000),
+                            color: Color(0xf3ffffff),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                             elevation: 0,
                             child: Center(
                               child: Text(
                                 "List Of Events",
-                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+                                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
                               ),
                             ),
                           ),
@@ -97,8 +97,65 @@ class _page0State extends State<page0> {
                                   .collection('list')
                                   .snapshots(),
                               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                                if (!snapshot.hasData) {
-                                  return Center(child: const Text('Loading events...'));
+                                /*if (!snapshot.hasData) {
+                                  //return Center(child: const Text('Loading events...'));
+                                  return Center(child: CircularProgressIndicator());
+                                }*/
+                                switch (snapshot.connectionState) {
+                                  case ConnectionState.none:
+                                    return Text('Press button to start.');
+                                  case ConnectionState.waiting:
+
+                                    return Container(child: CircularProgressIndicator(
+                                      strokeWidth: 20.0,
+                                    ), width: 10.0, height: 500.0,
+                                    padding: EdgeInsets.all(100.0),);
+                                    break;
+
+                                  case ConnectionState.done:
+
+                                  case ConnectionState.active:
+
+
+                                      return new StaggeredGridView.countBuilder(
+
+                                        scrollDirection: Axis.vertical,
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        crossAxisCount: 2,
+                                        itemCount: snapshot.data.documents.length,
+                                        itemBuilder: (BuildContext context, int index) => GestureDetector(
+                                          onTap: (){
+                                            /*rate = snapshot.data.documents[index]['rate'];
+                                      rules = utf8.decode(
+                                          base64.decode(snapshot.data.documents[index]['rules']));*/
+                                            switch(snapshot.data.documents[index].documentID){
+                                              case 'Main Stage': transport(mainstage()); break;
+                                              case 'Off Stage': transport(offstage()); break;
+                                              case 'Technical': transport(technical()); break;
+                                              case 'Gaming': transport(gaming()); break;
+                                              case 'Sports': transport(sports()); break;
+                                            }
+                                          },
+                                          child: new Container(
+                                            height: h,
+                                            child: Card(
+                                              elevation: 0,
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
+                                              color: Color(0xbf21038C),
+                                              child: new Center(
+                                                child: new Text(
+                                                  snapshot.data.documents[index].documentID.toString(),
+                                                  style: TextStyle(fontSize: 30.0, color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        staggeredTileBuilder: (int index) => new StaggeredTile.count(1, (index.isEven)? 1:1.5),
+                                        mainAxisSpacing: 4.0,
+                                        crossAxisSpacing: 4.0,
+                                      );
                                 }
                                 return new StaggeredGridView.countBuilder(
 
@@ -125,11 +182,11 @@ class _page0State extends State<page0> {
                                       child: Card(
                                         elevation: 0,
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
-                                        color: Color(0xf3D42361),
+                                        color: Color(0xbf21038C),
                                         child: new Center(
                                           child: new Text(
                                             snapshot.data.documents[index].documentID.toString(),
-                                            style: TextStyle(fontSize: 30.0, color: Colors.black),
+                                            style: TextStyle(fontSize: 30.0, color: Colors.white),
                                           ),
                                         ),
                                       ),

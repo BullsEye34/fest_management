@@ -95,8 +95,58 @@ class _mainstageState extends State<mainstage> {
           .collection('names')
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) {
+        /*if (!snapshot.hasData) {
           return Center(child: const Text('Loading events...'));
+        }*/
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            return Text('Press button to start.');
+          case ConnectionState.waiting:
+            return Container(child: CircularProgressIndicator(
+              strokeWidth: 20.0,
+            ), width: 10.0, height: 500.0,
+              padding: EdgeInsets.all(100.0),);
+            break;
+
+          case ConnectionState.done:
+
+          case ConnectionState.active:
+
+          return new StaggeredGridView.countBuilder(
+
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            itemCount: snapshot.data.documents.length,
+            itemBuilder: (BuildContext context, int index) => GestureDetector(
+              onTap: (){
+                rate = snapshot.data.documents[index]['rate'];
+                rules = utf8.decode(
+                    base64.decode(snapshot.data.documents[index]['rules']));
+                transport(test1(snapshot.data.documents[index]['title'], rules,
+                    rate, snapshot.data.documents[index]['title']));
+              },
+              child: new Container(
+                height: h,
+                child: Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.00),),
+                  color: Color(0xb3F28705),
+                  child: new Center(
+                    child: new Text(
+                      snapshot.data.documents[index]['title'],
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            staggeredTileBuilder: (int index) => new StaggeredTile.count(1, 0.4),
+            mainAxisSpacing: 4.0,
+            crossAxisSpacing: 4.0,
+          );
+
         }
         return new StaggeredGridView.countBuilder(
 

@@ -35,7 +35,7 @@ class _loginState extends State<login> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/login.jpg"),
+            image: AssetImage("images/thing1.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -211,7 +211,7 @@ class _loginState extends State<login> {
   }
 
   void _navigateToNextScreen(BuildContext context, Widget n) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => n),
     );

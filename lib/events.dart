@@ -1,3 +1,4 @@
+import 'package:fest_management/login.dart';
 import 'package:fest_management/page0.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -103,6 +104,27 @@ class _eventsState extends State<events> {
     return Scaffold(
       bottomNavigationBar: _bottomNavigationBar(_selectedIndex),
       appBar: AppBar(
+        actions: <Widget>[
+          FlatButton(child: Icon(Icons.exit_to_app, color: Colors.white,), onPressed: (){
+            return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  actions: <Widget>[
+                    FlatButton(onPressed: (){
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>login()));
+                    }, child: Text("Log Out"))
+                  ],
+                  title: Text("Log Out"),
+                  // Retrieve the text the that user has entered by using the
+                  // TextEditingController.
+                  content: Text("Do You Really Want to Log Out?"),
+                );
+              },
+            );
+          }, textColor: Colors.white, ),
+        ],
         backgroundColor: Color(0xff000000),
         title: Text("Fest Management"),
         centerTitle: true,
