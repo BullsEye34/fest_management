@@ -86,8 +86,10 @@ class _loginState extends State<login> {
                                 child: Container(
                                   child: TextFormField(
                                     validator: validateEmail,
+                                      keyboardType: TextInputType.emailAddress,
                                       controller: uname,
                                       decoration: InputDecoration(
+
                                         prefixIcon: Icon(Icons.face),
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),),
                                         labelText: 'Username (Mail ID)',
@@ -186,17 +188,111 @@ class _loginState extends State<login> {
   submite() async {
 
     FirebaseUser user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: uname.text, password: pwd.text)
-        .then((FirebaseUser user) {
+        .signInWithEmailAndPassword(email: uname.text, password: pwd.text).whenComplete((){
+
+    }).
+        then((FirebaseUser user) {
       isLoading = false;
       print("Logged In Successfully");
       print('****************************************************************');
-      _navigateToNextScreen(context, events());
+      //_navigateToNextScreen(context, events());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            // Retrieve the text the that user has entered by using the
+            // TextEditingController.
+            title: Text("Logged IN"),
+            actions: <Widget>[
+              FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+            ],
+          );
+        },
+      );
     })
 
         .catchError((e) {
+          print(e.toString());
+          switch(e.toString()){
+            case 'PlatformException(ERROR_USER_NOT_FOUND, There is no user record corresponding to this identifier. The user may have been deleted., null)' : showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  // Retrieve the text the that user has entered by using the
+                  // TextEditingController.
+                  title: Text("User Doesn't Exist!!"),
+                  actions: <Widget>[
+                    FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+                  ],
+                );
+              },
+            );
+            break;
+
+            case 'PlatformException(ERROR_WRONG_PASSWORD, The password is invalid or the user does not have a password., null)':
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    // Retrieve the text the that user has entered by using the
+                    // TextEditingController.
+                    title: Text("Wrong Password!"),
+                    actions: <Widget>[
+                      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+                    ],
+                  );
+                },
+              );
+              break;
+            case 'PlatformException(error, Given String is empty or null, null)':
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    // Retrieve the text the that user has entered by using the
+                    // TextEditingController.
+                    title: Text("Incomplete Details!!"),
+                    actions: <Widget>[
+                      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+                    ],
+                  );
+                },
+              );
+              break;
+            case 'PlatformException(ERROR_INVALID_EMAIL, The email address is badly formatted., null)':
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    // Retrieve the text the that user has entered by using the
+                    // TextEditingController.
+                    title: Text("Username should be an Email Address!!"),
+                    actions: <Widget>[
+                      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+                    ],
+                  );
+                },
+              );
+              break;
+
+            default: showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  // Retrieve the text the that user has entered by using the
+                  // TextEditingController.
+                  title: Text(e.toString()),
+                  actions: <Widget>[
+                    FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))
+                  ],
+                );
+              },
+            );
+            break;
+
+          }
       isLoading = false;
-      showDialog(
+      /*showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -205,11 +301,10 @@ class _loginState extends State<login> {
             content: Text(e.toString()),
           );
         },
-      );
+      );*/
     });
 
   }
-
   void _navigateToNextScreen(BuildContext context, Widget n) {
     Navigator.pushReplacement(
       context,
